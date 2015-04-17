@@ -1,0 +1,22 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+## RVM
+.rvmrc
+.ruby-version
+.ruby-gemset
+
+## Mac
+.DS_Store
+
+## Vim
+*.swp
+*.swo
+*~
