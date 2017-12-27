@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'devise_pkcs12_authenticatable/strategy'
 
 module Devise
@@ -10,8 +12,6 @@ module Devise
         return false if self[::Devise.pkcs12_common_name_field].blank?
         self[::Devise.pkcs12_common_name_field] == common_name
       end
-
-      protected
 
       module ClassMethods
         def find_for_pkcs12_authentication(conditions)

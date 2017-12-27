@@ -1,22 +1,27 @@
+# frozen_string_literal: true
+
 require 'devise/strategies/database_authenticatable'
 
 module Devise
   module Strategies
     class PKCS12Authenticatable < DatabaseAuthenticatable
+      # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Lint/AssignmentInCondition,Style/Semicolon,Metrics/LineLength
       def authenticate!
-        opts = authentication_hash.merge(Hash[::Devise.pkcs12_common_name_field, common_name])
+        opts      = authentication_hash.merge(Hash[::Devise.pkcs12_common_name_field, common_name])
         resource  = password.present? && mapping.to.find_for_pkcs12_authentication(opts)
         encrypted = false
 
-        if validate(resource){ encrypted = true; resource.valid_password?(password) } && resource.valid_common_name?(common_name)
+        if validate(resource) { encrypted = true; resource.valid_password?(password) } && resource.valid_common_name?(common_name)
           remember_me(resource)
           resource.after_database_authentication
           success!(resource)
         end
 
         mapping.to.new.password = password if !encrypted && Devise.paranoid
+
         fail!(:not_found_in_database) unless resource
       end
+      # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Lint/AssignmentInCondition,Style/Semicolon,Metrics/LineLength
 
       def valid?
         super && client_verify?
