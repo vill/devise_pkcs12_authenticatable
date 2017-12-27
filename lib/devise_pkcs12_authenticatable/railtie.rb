@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module PKCS12Authenticatable
-  class Engine < ::Rails::Engine
+  class Railtie < ::Rails::Railtie
     ActiveSupport::Inflector.inflections(:en) do |inflect|
       inflect.acronym 'PKCS12'
     end
