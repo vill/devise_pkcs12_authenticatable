@@ -1,4 +1,6 @@
-# Devise PKCS #12 Authenticatable [![Gem Version](https://badge.fury.io/rb/devise_pkcs12_authenticatable.svg)](http://badge.fury.io/rb/devise_pkcs12_authenticatable)
+# Devise PKCS #12 Authenticatable
+
+[![Gem Version](https://badge.fury.io/rb/devise_pkcs12_authenticatable.svg)](http://badge.fury.io/rb/devise_pkcs12_authenticatable) [![Gem](https://img.shields.io/gem/dt/devise_pkcs12_authenticatable.svg)](https://rubygems.org/gems/devise_pkcs12_authenticatable) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/vill/devise_pkcs12_authenticatable.svg)](https://github.com/vill/devise_pkcs12_authenticatable) [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/vill/devise_pkcs12_authenticatable.svg)](https://github.com/vill/devise_pkcs12_authenticatable) [![GitHub license](https://img.shields.io/github/license/vill/devise_pkcs12_authenticatable.svg)](https://github.com/vill/devise_pkcs12_authenticatable/blob/master/LICENSE)
 
 `devise_pkcs12_authenticatable` is client side SSL certificate authentication (based on [PKCS #12](https://en.wikipedia.org/wiki/PKCS_12)) support for [Devise](https://github.com/plataformatec/devise) applications.
 For authentication `devise_pkcs12_authenticatable` uses field called `CN` (Common Name) from Distinguished Name (DN) of the SSl certificate subject
@@ -16,7 +18,7 @@ and keys for any authentication mechanism from `config/initializers/devise.rb` c
 Add this lines to your application's Gemfile:
 
 ```ruby
-gem 'devise', '~> 3.4.1'
+gem 'devise'
 gem 'devise_pkcs12_authenticatable'
 ```
 
@@ -58,9 +60,9 @@ And then execute:
 
   Your model needs one attribute called `cn`, migration allow you to do so:
 
-    `add_column :users, :cn, :string, null: false, index: true`
+    add_column :users, :cn, :string, null: false, index: true
 
-  If you need to configure `devise_pkcs12_authenticatable` then add to your config/initializers/devise.rb
+  If you need to configure `devise_pkcs12_authenticatable` then add to your `config/initializers/devise.rb`
 
   ```ruby
   Devise.setup do |config|
